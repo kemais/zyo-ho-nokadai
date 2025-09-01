@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>自分攻略ゲーム</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>自分攻略ゲーム</h1>
+  <p>自分の一週間を攻略してみよう！</p>
+
+  <!-- 「はじめる」ボタン -->
+  <center><button id="startButton">はじめる！</button></center>
+
+
+<div id="storyScreen" style="display:none;">
+  <p>二回ボタンをタップで決定！</p>
+　<p>自分の行動を制御しながらエンディングを目指そう!</p>
+  <button id="storyNextButton">ゲームを始める</button>
+</div>
+
+  <!-- ゲーム中の画面 -->
+  <div id="game" style="display:none;">
+    <div id="dayScreen">
+      <h1 id="dayText">1日目（朝）</h1>
+      <div id="choices"></div>
+    </div>
+
+    <!-- パラメータ表示エリア（左下固定・バー1つ） -->
+    <div id="statusBox" style="position: fixed; bottom: 10px; left: 10px; 
+        background: rgba(255,255,255,0.85); padding: 12px; border-radius: 10px; width: 240px;">
+      <!-- JSがバーとプレビューを作ります -->
+    </div>
+
+    <!-- 中毒ラベル -->
+    <div id="addictionLabel" style="position: absolute; top: 10px; right: 10px; 
+        color: red; font-weight: bold; display: none;">
+      勉強中毒！
+    </div>
+  </div>
+
+  <!-- アニメーション画面 -->
+  <div id="animationScreen">
+    <p id="animationText">アニメーション中...</p>
+  </div>
+
+  <!-- 救急車アニメーション用 -->
+  <div id="ambulanceAnimation" style="position:absolute; top:200px; width:100%; height:100px; pointer-events:none; display:none;">
+    <div class="ambulance">🚑<span class="light"></span></div>
+  </div>
+
+  <!-- エンディング画面 -->
+  <div id="endingScreen">
+    <h2>エンディング</h2>
+    <p id="endingText"></p>
+    <button id="restartButton">もう一度プレイ</button>
+  </div>
+
+  <!-- エンディングコレクションモーダル -->
+  <button onclick="openEndingCollection()">エンディングコレクション</button>
+  <div id="endingModal" style="display:none; position:fixed; top:0; left:0; 
+       width:100%; height:100%; background:rgba(0,0,0,0.6);">
+    <div style="background:#fff; padding:20px; width:80%; max-width:500px; 
+                margin:50px auto; border-radius:10px; overflow-y:auto; max-height:80%;">
+      <h2>エンディングコレクション</h2>
+      <div id="endingList"></div>
+      <button onclick="closeEndingCollection()">閉じる</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
